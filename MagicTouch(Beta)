@@ -12,7 +12,7 @@ ARGV.length.times do |i|
 		DictionaryProcesses.helpMenu
 	end
 end
-=end
+
 
 #puts "tamamdır" if "5" =~ /\A[0-9]\z/
 #puts "tamamdır" if "*" =~ /\A[0-9]\z/
@@ -22,9 +22,10 @@ excepting = []
 specificIndex = []
 asteriskIndex = []
 count = 0
+=end
 
+#arr = "1*1*1".split('')
 
-arr = "*****".split('')
 
 =begin
 "1*8**3".chars do |c| 
@@ -39,158 +40,461 @@ arr = "*****".split('')
 end
 =end
 
+arr = "****".split('')
 
 file = File.open("deneme.txt", "w")
 
 
-if arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				(0..9).each do |x|
-					(0..9).each do |y|
-						file.puts i.to_s + j.to_s + k.to_s + x.to_s + y.to_s
+if arr.length == 1
+	raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
+elsif arr.length == 2
+	if arr[0] == '*' and arr[1] == '*'
+		raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
+	elsif arr[0] == '*' and arr[1] != '*'
+		(0..9).each do |i|
+			file.puts i.to_s + arr[1].to_s
+		end
+	elsif arr[0] != '*' and arr[1] == '*'
+		(0..9).each do |i|
+			file.puts arr[0].to_s + i.to_s
+		end
+	elsif arr[0] != '*' and arr[1] != '*'
+		raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
+	end
+elsif arr.length == 3
+	if arr[0] == '*' and arr[1] == '*' and arr[2] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + j.to_s + k.to_s
+				end
+			end
+		end
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + j.to_s + arr[2].to_s
+			end
+		end
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s arr[1].to_s + j.to_s
+			end
+		end
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*'
+		(0..9).each do |i|
+			file.puts i.to_s arr[1].to_s + arr[2].to_s
+		end
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + i.to_s + j.to_s
+			end
+		end
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*'
+		(0..9).each do |i|
+			file.puts arr[0].to_s + i.to_s + arr[2].to_s
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*'
+		(0..9).each do |i|
+			file.puts arr[0].to_s + arr[1].to_s + i.to_s
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*'
+		raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
+	end
+elsif arr.length == 4
+	if arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*'
+		raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
+	
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + j.to_s + k.to_s + arr[3].to_s
+				end
+			end
+		end
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + j.to_s + arr[2].to_s + k.to_s
+				end
+			end
+		end
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + j.to_s + arr[2].to_s + arr[3].to_s
+			end
+		end
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + arr[1].to_s + j.to_s + k.to_s
+				end
+			end
+		end
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + arr[1].to_s + j.to_s + arr[3].to_s
+			end
+		end
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + arr[1].to_s + arr[2].to_s + j.to_s
+			end
+		end
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*'
+		(0..9).each do |i|
+			file.puts i.to_s + arr[1].to_s + arr[2].to_s + arr[3].to_s
+		end
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts arr[0].to_s + i.to_s + j.to_s + k.to_s
+				end
+			end
+		end
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + i.to_s + j.to_s + arr[3].to_s
+			end
+		end
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + i.to_s + arr[2].to_s + j.to_s
+			end
+		end
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*'
+		(0..9).each do |i|
+			file.puts arr[0].to_s + i.to_s + arr[2].to_s + arr[3].to_s	
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + arr[1].to_s + i.to_s + j.to_s
+			end
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*'
+		(0..9).each do |i|
+			file.puts arr[0].to_s + arr[1].to_s + i.to_s + arr[3].to_s
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*'
+		(0..9).each do |i|
+			file.puts arr[0].to_s + arr[1].to_s + arr[2].to_s + i.to_s
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*'
+		raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
+	end
+
+elsif arr.length == 5
+	if arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					(0..9).each do |x|
+						(0..9).each do |y|
+							file.puts i.to_s + j.to_s + k.to_s + x.to_s + y.to_s
+						end
 					end
 				end
 			end
 		end
-	end
 
-elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				(0..9).each do |x|
-					file.puts i.to_s + j.to_s + k.to_s + x.to_s + arr[4].to_s
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					(0..9).each do |x|
+						file.puts i.to_s + j.to_s + k.to_s + x.to_s + arr[4].to_s
+					end
 				end
 			end
 		end
-	end
 
 
-elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
 
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				(0..9).each do |x|
-					file.puts i.to_s + j.to_s + k.to_s + arr[3].to_s + x.to_s 
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					(0..9).each do |x|
+						file.puts i.to_s + j.to_s + k.to_s + arr[3].to_s + x.to_s 
+					end
 				end
 			end
 		end
-	end
 
-elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
 
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				file.puts i.to_s + j.to_s + k.to_s + arr[3].to_s + arr[4].to_s
-			end
-		end
-	end
-
-elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				(0..9).each do |x|
-					file.puts i.to_s + j.to_s + arr[2].to_s + k.to_s + x.to_s 
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + j.to_s + k.to_s + arr[3].to_s + arr[4].to_s
 				end
 			end
 		end
-	end
 
-elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
-
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				file.puts i.to_s + j.to_s + arr[2].to_s + k.to_s + arr[4].to_s
-			end
-		end
-	end
-
-
-elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				file.puts i.to_s + j.to_s + arr[2].to_s + arr[3].to_s + k.to_s
-			end
-		end
-	end
-
-elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
-
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				file.puts i.to_s + j.to_s + arr[2].to_s + arr[3].to_s + arr[4].to_s
-			end
-		end
-	end
-
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
-
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				(0..9).each do |l|
-					file.puts i.to_s + arr[1].to_s + j.to_s + k.to_s + l.to_s
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					(0..9).each do |x|
+						file.puts i.to_s + j.to_s + arr[2].to_s + k.to_s + x.to_s 
+					end
 				end
 			end
 		end
-	end
 
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
 
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
-
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				file.puts i.to_s + arr[1].to_s + j.to_s + k.to_s + arr[4].to_s
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + j.to_s + arr[2].to_s + k.to_s + arr[4].to_s
+				end
 			end
 		end
-	end
 
 
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
-
-	(0..9).each do |i|
-		(0..9).each do |j|
-			(0..9).each do |k|
-				file.puts i.to_s + arr[1].to_s + j.to_s + arr[3].to_s + k.to_s
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + j.to_s + arr[2].to_s + arr[3].to_s + k.to_s
+				end
 			end
 		end
+
+	elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + j.to_s + arr[2].to_s + arr[3].to_s + arr[4].to_s
+				end
+			end
+		end
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					(0..9).each do |l|
+						file.puts i.to_s + arr[1].to_s + j.to_s + k.to_s + l.to_s
+					end
+				end
+			end
+		end
+
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + arr[1].to_s + j.to_s + k.to_s + arr[4].to_s
+				end
+			end
+		end
+
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + arr[1].to_s + j.to_s + arr[3].to_s + k.to_s
+				end
+			end
+		end
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + arr[1].to_s + j.to_s + arr[3].to_s + arr[4].to_s	
+			end
+		end
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts i.to_s + arr[1].to_s + arr[2].to_s + j.to_s + k.to_s	
+				end
+			end
+		end
+
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + arr[1].to_s + arr[2].to_s + j.to_s + arr[4].to_s
+			end
+		end
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + arr[1].to_s + arr[2].to_s + arr[3].to_s + j.to_s
+			end
+		end
+
+	elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts i.to_s + arr[1].to_s + arr[2].to_s + arr[3].to_s + arr[4].to_s
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					(0..9).each do |x|
+						file.puts arr[0].to_s + i.to_s + j.to_s + k.to_s + x.to_s
+					end
+				end
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts arr[0].to_s + i.to_s + j.to_s + k.to_s + arr[4].to_s
+				end
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts arr[0].to_s + i.to_s + j.to_s + arr[3].to_s + k.to_s
+				end
+			end
+		end
+
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + i.to_s + j.to_s + arr[3].to_s + arr[4].to_s
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts arr[0].to_s + i.to_s + arr[2].to_s + j.to_s + k.to_s
+				end
+			end
+		end
+
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + i.to_s + arr[2].to_s + j.to_s + arr[4].to_s
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + i.to_s + arr[2].to_s + arr[3].to_s + j.to_s	
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			file.puts arr[0].to_s + i.to_s + arr[2].to_s + arr[3].to_s + arr[4].to_s	
+		end	
+
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts arr[0].to_s + arr[1].to_s + i.to_s + j.to_s + k.to_s	
+				end
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + arr[1].to_s + i.to_s + j.to_s + arr[4].to_s	
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				(0..9).each do |k|
+					file.puts arr[0].to_s + arr[1].to_s + i.to_s + arr[3].to_s + k.to_s	
+				end
+			end
+		end
+
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
+
+		(0..9).each do |i|
+			file.puts arr[0].to_s + arr[1].to_s + i.to_s + arr[3].to_s + arr[4].to_s	
+		end
+
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
+
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + arr[1].to_s + arr[2].to_s + i.to_s + j.to_s	
+			end
+		end
+
+
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
+		(0..9).each do |i|
+			(0..9).each do |j|
+				file.puts arr[0].to_s + arr[1].to_s + arr[2].to_s + i.to_s + arr[4].to_s	
+			end
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
+		(0..9).each do |i|
+				file.puts arr[0].to_s + arr[1].to_s + arr[2].to_s + arr[3].to_s + i.to_s
+		end
+	elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
+		raise "Böyle pattern olmaz."
+
 	end
 end
+
 =begin
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
-elsif arr[0] == '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
-elsif arr[0] != '*' and arr[1] != '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
-	raise "Böyle pattern olmaz."
-
-
-
 if arr[0] == '*' and arr[1] != '*'
 	(0..9).each do |i|
 		(0..9).each do |j|
