@@ -22,7 +22,7 @@ ARGV.length.times do |i|
 	elsif ARGV[i] == "--help" or ARGV[i] == "-h"
 		DictionaryProcesses.helpMenu
 	elsif ARGV[i] == "--regExp" or ARGV[i] == "-r"
-		regExp = ARGV[i+1]
+		regExp = ARGV[i+1]  # Sadece yıldız (*****) girince maalesef sorun çıkıyor. Diğer türlü sorun yok. 
 	end
 end
 
