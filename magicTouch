@@ -3,6 +3,7 @@ require './DictionaryProcesses'
 
 
 # Default Values
+
 min = 0
 max = 0
 charset = nil
