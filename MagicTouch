@@ -18,33 +18,112 @@ end
 #puts "tamamdır" if "*" =~ /\A[0-9]\z/
 
 
-specific = []
+excepting = []
+specificIndex = []
 asteriskIndex = []
 count = 0
 
 
-arr = "1*8**3".split('')
+arr = "*18*3".split('')
 
+=begin
 "1*8**3".chars do |c| 
 	if c =~ /[0-9]/
-		specific.push(c)  # Tekrarlanmayı önlemek için depolanır.
+		excepting.push(c)  # Tekrarlanmayı önlemek için depolanır.
+		specificIndex.push(count)
 	else
 		asteriskIndex.push(count)	# Yıldızlar tespit edilir.
 	end
 
 	count += 1
 end
+=end
 
-File.open("deneme.txt", )
 
-asteriskIndex.length.times do |i| 
+file = File.open("deneme.txt", "w")
+
+
+if arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] == '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] != '*' and arr[4] != '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] == '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] == '*' and arr[4] != '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] == '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] != '*' and arr[3] != '*' and arr[4] != '*'
+elsif arr[0] == '*' and arr[1] != '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
+elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
+
+if arr[0] == '*' and arr[1] != '*'
+	(0..9).each do |i|
+		(0..9).each do |j|
+			file.puts i.to_s + arr[1].to_s + arr[2].to_s + j.to_s + arr[5].to_s
+		end
+	end
+elsif arr[1] == '*'
+	(0..9).each do |i|
+		(0..9).each do |j|
+			(0..9).each do |z|
+				file.puts i.to_s + arr[specificIndex[0]].to_s + arr[specificIndex[1]].to_s + j.to_s + z.to_s + arr[specificIndex[2]].to_s
+			end
+		end
+	end
+elsif arr[2] == '*'
+	(0..9).each do |i|
+		(0..9).each do |j|
+			(0..9).each do |z|
+				file.puts i.to_s + arr[specificIndex[0]].to_s + arr[specificIndex[1]].to_s + j.to_s + z.to_s + arr[specificIndex[2]].to_s
+			end
+		end
+	end
+
+
+
+end
+
+=begin
+elsif "*18**3".
+
+
+
+	(0..9).each do |i|
+		(0..9).each do |j|
+			(0..9).each do |z|
+				file.puts arr[specificIndex[0]].to_s + i.to_s + arr[specificIndex[1]].to_s + j.to_s + z.to_s + arr[specificIndex[2]].to_s
+			end
+		end
+	end
+end
+
+file.close
+
+
+=begin
+
+
+
+
+
+#asteriskIndex.each do |i| 
+
+
+
 
 
 	(0..9).select |num| do
-		if specific.include? num
+		if excepting.include? num
 			next
 		else
-			arr[asteriskIndex[i]] = num
+			if
+
+
+
+			specificIndex.
+
+
+
+			file.puts + + + + arr[asteriskIndex[i]] = num
 		end
 	}
 
@@ -53,12 +132,6 @@ asteriskIndex.length.times do |i|
 
 end
 
-
-
-
-
-
-=begin
 
 mode
 

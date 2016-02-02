@@ -1,1 +1,0 @@
-Harry Codders selamlar diler
