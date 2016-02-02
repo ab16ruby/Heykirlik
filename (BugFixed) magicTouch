@@ -1,0 +1,85 @@
+#!/usr/bin/env ruby
+require './DictionaryProcesses'
+
+
+# Default Values
+min = 0
+max = 0
+charset = nil
+fileName = nil
+regExp = nil
+
+# Fetching Arguments From Console
+ARGV.length.times do |i|
+	if ARGV[i] == "--min" or ARGV[i] == "-m"
+		min = ARGV[i+1]
+	elsif ARGV[i] == "--max" or ARGV[i] == "-M"
+		max = ARGV[i+1]
+	elsif ARGV[i] == "--charset" or ARGV[i] == "-c"
+		charset = ARGV[i+1]
+	elsif ARGV[i] == "--fileName" or ARGV[i] == "-o"
+		fileName = ARGV[i+1]
+	elsif ARGV[i] == "--help" or ARGV[i] == "-h"
+		DictionaryProcesses.helpMenu
+	elsif ARGV[i] == "--regExp" or ARGV[i] == "-r"
+		regExp = ARGV[i+1]  # Sadece yıldız (*****) girince maalesef sorun çıkıyor. Diğer türlü sorun yok. 
+	end
+end
+
+
+# Some Audits
+if charset.nil?
+	charset = "alphabetSet"
+end
+if fileName.nil?
+	fileName = "sozluk"
+end
+
+# Exceptions
+if min > max
+	raise DictionaryProcesses.errorMessage
+	exit
+end
+if fileName.include? "."
+	fileName = fileName.split('.')[0]
+end
+
+#Patch
+#if !regExp.nill?
+#	dontUseOtherCharacters = true
+
+# Open Wordlist
+file = File.open("#{fileName}.txt", "a+")
+
+
+# Gereksiz Bir Koşul Gerekti, Çünkü Entegrasyon Hızlı Yapıldı.
+if regExp == nil
+
+	# Create Wordlist
+	if charset == "alphabetSet"
+		DictionaryProcesses.createAlphabetSet(file, min, max)
+	elsif charset == "numberSet"
+		DictionaryProcesses.createNumberSet(file, min, max)
+	elsif charset == "specialCharacterSet"
+		DictionaryProcesses.createSpecialCharacterSet(file, min, max)
+	elsif charset == "alphaAndNumSet"
+		DictionaryProcesses.createAlphaAndNumSet(file, min, max)
+	elsif charset == "alphaAndSpecSet"
+		DictionaryProcesses.createAlphaAndSpecSet(file, min, max)
+	elsif charset == "numAndSpecSet"
+		DictionaryProcesses.createNumAndSpecSet(file, min, max)
+	elsif charset == "alphaNumAndSpecSet"
+		DictionaryProcesses.createAlphaNumAndSpecSet(file, min, max)
+	end
+else
+	DictionaryProcesses.createWordlistByUsingRegExp(file, regExp)
+end
+
+
+
+=begin
+magicTouch <min> <max> <charset> <filename>
+
+
+magicTouch --minimum <min> --maksimum <max> --karakterListesi <charset> --dosya <filename>
+=end

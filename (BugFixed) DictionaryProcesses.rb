@@ -44,13 +44,6 @@ class DictionaryProcesses
 		puts "./magicTouch -m 2 -M 3 -c alphaNumAndSpecSet"
 		puts
 		puts
-		puts "By Team Harry Coders"
-		puts "--------------------"
-		puts "- Hasan Fatih ŞİMŞEK"
-		puts "- Ali Kaan"
-		puts "- Seda"
-		puts
-		puts
 		exit
 	end
 
@@ -2096,7 +2089,8 @@ class DictionaryProcesses
 	end
 
 	def self.createWordlistByUsingRegExp(file, regExp)
-		arr = regExp.chars
+		arr = regExp.split('')
+
 
 		if arr.length == 1
 			raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
@@ -2251,6 +2245,7 @@ class DictionaryProcesses
 		elsif arr.length == 5
 			if arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] == '*'
 				raise "\n\n########################################\n\nBöyle pattern olmaz olum! Bunun için pattern'a ihtiyacın yok.\n\n########################################\n\n"
+			
 			elsif arr[0] == '*' and arr[1] == '*' and arr[2] == '*' and arr[3] == '*' and arr[4] != '*'
 				(0..9).each do |i|
 					(0..9).each do |j|
