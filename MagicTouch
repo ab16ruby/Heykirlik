@@ -1,0 +1,83 @@
+#!/usr/bin/env ruby
+
+=begin
+ARGV.length.times do |i|
+	if ARGV[i] == "--pattern" or ARGV[i] == "-p"
+		pattern = ARGV[i+1]
+	elsif ARGV[i] == "--charset" or ARGV[i] == "-c"
+		charset = ARGV[i+1]
+	elsif ARGV[i] == "--fileName" or ARGV[i] == "-o"
+		fileName = ARGV[i+1]
+	elsif ARGV[i] == "--help" or ARGV[i] == "-h"
+		DictionaryProcesses.helpMenu
+	end
+end
+=end
+
+#puts "tamamdır" if "5" =~ /\A[0-9]\z/
+#puts "tamamdır" if "*" =~ /\A[0-9]\z/
+
+
+specific = []
+asteriskIndex = []
+count = 0
+
+
+arr = "1*8**3".split('')
+
+"1*8**3".chars do |c| 
+	if c =~ /[0-9]/
+		specific.push(c)  # Tekrarlanmayı önlemek için depolanır.
+	else
+		asteriskIndex.push(count)	# Yıldızlar tespit edilir.
+	end
+
+	count += 1
+end
+
+File.open("deneme.txt", )
+
+asteriskIndex.length.times do |i| 
+
+
+	(0..9).select |num| do
+		if specific.include? num
+			next
+		else
+			arr[asteriskIndex[i]] = num
+		end
+	}
+
+	end 
+	
+
+end
+
+
+
+
+
+
+=begin
+
+mode
+
+A) 
+B) basamaklarda bilinen değerler varsa giriniz = 1*33** || ******
+C) **	
+
+0)
+
+	******
+
+
+1)
+
+data
+	1*8**3     // TEKRARLANMAYAN
+
+2)
+
+	1*8**3     // TEKRARLANAN
+
+=end
